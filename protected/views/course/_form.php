@@ -1,7 +1,7 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'signature-form',
+	'id'=>'course-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 

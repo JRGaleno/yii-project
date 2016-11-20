@@ -1,21 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "signature".
+ * This is the model class for table "course".
  *
- * The followings are the available columns in table 'signature':
- * @property integer $id_signature
+ * The followings are the available columns in table 'course':
+ * @property integer $id_course
  * @property string $name
  * @property string $code
  */
-class signature extends CActiveRecord
+class course extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'signature';
+		return 'course';
 	}
 
 	/**
@@ -31,7 +31,7 @@ class signature extends CActiveRecord
 			array('code', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id_signature, name, code', 'safe', 'on'=>'search'),
+			array('id_course, name, code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +52,7 @@ class signature extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_signature' => 'Id Signature',
+			'id_course' => 'Id Course',
 			'name' => 'Name',
 			'code' => 'Code',
 		);
@@ -76,20 +76,20 @@ class signature extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_signature',$this->id_signature);
+		$criteria->compare('id_course',$this->id_course);
 
 		$criteria->compare('name',$this->name,true);
 
 		$criteria->compare('code',$this->code,true);
 
-		return new CActiveDataProvider('signature', array(
+		return new CActiveDataProvider('course', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return signature the static model class
+	 * @return course the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

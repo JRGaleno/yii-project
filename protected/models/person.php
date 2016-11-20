@@ -54,6 +54,11 @@ class person extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'id_gender'=>array(self::HAS_ONE, 'gender', 'id_gender'),
+                    'id_studies'=>array(self::HAS_ONE, 'studies', 'id_studies'),
+                    'id_country_current'=>array(self::HAS_ONE, 'country', 'id_country'),
+                    'id_civil_estatus'=>array(self::HAS_ONE, 'civil_status', 'id_civil_status'),
+                    'id_country_origin'=>array(self::HAS_ONE, 'country', 'id_country'),
 		);
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-class SignatureController extends Controller
+class Student_courseController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -36,11 +36,11 @@ class SignatureController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('admin','create','update'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('delete'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -65,16 +65,16 @@ class SignatureController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new signature;
+		$model=new student_course;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['signature']))
+		if(isset($_POST['student_course']))
 		{
-			$model->attributes=$_POST['signature'];
+			$model->attributes=$_POST['student_course'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_signature));
+				$this->redirect(array('view','id'=>$model->id_student_course));
 		}
 
 		$this->render('create',array(
@@ -93,11 +93,11 @@ class SignatureController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['signature']))
+		if(isset($_POST['student_course']))
 		{
-			$model->attributes=$_POST['signature'];
+			$model->attributes=$_POST['student_course'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_signature));
+				$this->redirect(array('view','id'=>$model->id_student_course));
 		}
 
 		$this->render('update',array(
@@ -129,7 +129,7 @@ class SignatureController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('signature');
+		$dataProvider=new CActiveDataProvider('student_course');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -140,10 +140,10 @@ class SignatureController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new signature('search');
+		$model=new student_course('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['signature']))
-			$model->attributes=$_GET['signature'];
+		if(isset($_GET['student_course']))
+			$model->attributes=$_GET['student_course'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -159,7 +159,7 @@ class SignatureController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=signature::model()->findbyPk($_GET['id']);
+				$this->_model=student_course::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404,'The requested page does not exist.');
 		}
@@ -172,7 +172,7 @@ class SignatureController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='signature-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='student-course-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

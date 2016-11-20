@@ -6,8 +6,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id_signature'); ?>
-		<?php echo $form->textField($model,'id_signature'); ?>
+		<?php echo $form->label($model,'id_course'); ?>
+		<?php echo $form->textField($model,'id_course'); ?>
 	</div>
 
 	<div class="row">
