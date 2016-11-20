@@ -11,6 +11,12 @@ $this->menu=  [array('label'=>'Manage signature', 'url'=>array('admin'), 'visibl
 
 <h1>Available Signatures</h1>
 
+
+
+
+
+
+
 <?php
 $record=person::model()->findByPk(Yii::app()->user->getId());
 echo $record['role']; 
