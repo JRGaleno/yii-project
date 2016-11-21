@@ -23,7 +23,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'role'); ?>		
-                <?php echo CHtml::dropDownList('Roles', null, array('STUDENT' => 'STUDENT', 'PROFESOR' => 'PROFESOR'),array('empty' => 'Select a role')); ?>  
+                <?php echo $form->dropDownList($model, 'role', array('STUDENT' => 'STUDENT', 'PROFESOR' => 'PROFESOR'),array('empty' => 'Select a role')); ?>  
                 <?php echo $form->error($model,'role'); ?>
 	</div>
 
@@ -65,7 +65,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Civil status'); ?>
-		<?php echo $form->dropDownList($model,'id_civil_estatus', CHtml::listData(country::model()->findAll(), 'id_country', 'name'), array('empty'=>'select a country')); ?>
+		<?php echo $form->dropDownList($model,'id_civil_estatus', CHtml::listData(civil_status::model()->findAll(), 'id_civil_status', 'name'), array('empty'=>'select a civil status')); ?>
 		<?php echo $form->error($model,'id_civil_estatus'); ?>
 	</div>
 
@@ -77,7 +77,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo CHtml::dropDownList('status', 'ACTIVO' , array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'),array('empty' => 'Select a status')); ?>  
+		<?php echo $form->dropDownList($model,'status', array('ACTIVO' => 'ACTIVO', 'INACTIVO' => 'INACTIVO'),array('empty' => 'Select a status')); ?>  
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 

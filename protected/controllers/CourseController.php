@@ -73,13 +73,16 @@ class CourseController extends Controller
 		if(isset($_POST['course']))
 		{
 			$model->attributes=$_POST['course'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_course));
+                        
+                        print_r($model->getAttributes());
+			//if($model->save())
+				//$this->redirect(array('view','id'=>$model->id_course));
 		}
-
-		$this->render('create',array(
+                //$this->redirect(array('view','id'=>$model->id_course));
+		/*$this->render('create',array(
 			'model'=>$model,
-		));
+                ));*/
+
 	}
 
 	/**
@@ -129,10 +132,28 @@ class CourseController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('course');
+		/*$dataProvider=new CActiveDataProvider('course');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
-		));
+		));*/
+                $model=new course;
+                $page = 1;  
+                if(isset($_POST['page']))
+                {
+                    $page = $_POST['page'];
+                }
+
+                $dataProvider = new CActiveDataProvider('course',array(
+                        'pagination'=>array(
+                            'pageSize'=>9,
+                            'currentPage'=> $page - 1,
+                        ),
+                        ));
+
+                $this->render('_form', array(
+                    'dataProvider' => $dataProvider,
+                    'model' => $model
+                ));
 	}
 
 	/**

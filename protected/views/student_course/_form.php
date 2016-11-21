@@ -10,33 +10,23 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'id_student'); ?>
-		<?php echo $form->textField($model,'id_student'); ?>
-		<?php echo $form->error($model,'id_student'); ?>
+		<?php echo $form->hiddenField($model,'id_student',['value'=>yii::app()->user->getId()]); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_course'); ?>
-		<?php echo $form->textField($model,'id_course'); ?>
+                <?php echo $form->dropDownList($model,'id_course', CHtml::listData(course::model()->findAll(), 'id_course', 'name'), array('empty'=>'select a course')); ?> 
 		<?php echo $form->error($model,'id_course'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'grade'); ?>
-		<?php echo $form->textField($model,'grade',array('size'=>11,'maxlength'=>11)); ?>
-		<?php echo $form->error($model,'grade'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'id_profesor'); ?>
-		<?php echo $form->textField($model,'id_profesor'); ?>
+		<?php echo $form->dropDownList($model,'id_profesor', CHtml::listData(person::model()->findAll(), 'id_person', 'name'), array('empty'=>'select a profesor')); ?>
 		<?php echo $form->error($model,'id_profesor'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'status'); ?>
+                <?php echo $form->hiddenField($model,'status',['value'=>'matriculate']); ?>
 	</div>
 
 	<div class="row buttons">

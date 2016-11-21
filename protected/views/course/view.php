@@ -15,11 +15,12 @@ $this->menu=array(
 
 <h1>View course #<?php echo $model->id_course; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
+<?php $this->widget('zii.widgets.CDetailView', 
+        array('data'=>$model,
 	'attributes'=>array(
-		'id_course',
-		'name',
-		'code',
-	),
-)); ?>
+                        'id_course',
+                        'name',
+                        'code',
+                            ),
+             ));
+?>

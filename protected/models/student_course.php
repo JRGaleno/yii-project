@@ -9,7 +9,7 @@
  * @property string $grade
  * @property integer $id_profesor
  * @property string $status
- * @property string $id_student_course
+ * @property integer $id_student_course
  */
 class student_course extends CActiveRecord
 {
@@ -29,11 +29,10 @@ class student_course extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_student, id_course, grade, id_profesor, status, id_student_course', 'required'),
+			array('id_student, id_course, id_profesor, status', 'required'),
 			array('id_student, id_course, id_profesor', 'numerical', 'integerOnly'=>true),
 			array('grade', 'length', 'max'=>11),
-			array('status', 'length', 'max'=>10),
-			array('id_student_course', 'length', 'max'=>45),
+			array('status', 'length', 'max'=>12),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id_student, id_course, grade, id_profesor, status, id_student_course', 'safe', 'on'=>'search'),
@@ -94,7 +93,7 @@ class student_course extends CActiveRecord
 
 		$criteria->compare('status',$this->status,true);
 
-		$criteria->compare('id_student_course',$this->id_student_course,true);
+		$criteria->compare('id_student_course',$this->id_student_course);
 
 		return new CActiveDataProvider('student_course', array(
 			'criteria'=>$criteria,

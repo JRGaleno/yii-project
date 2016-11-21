@@ -65,7 +65,8 @@ class PersonController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new person;
+		
+                $model=new person;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
